@@ -1,0 +1,26 @@
+﻿@model Clinica.Models.Especie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Especie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeEspecie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeEspecie)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EspecieID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
