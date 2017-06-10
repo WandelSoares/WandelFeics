@@ -4,27 +4,27 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Cliente</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Cadastrar Cliente", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nome)
+            @Html.DisplayName("Nome")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Endereco)
+            @Html.DisplayName("Endereço")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Telefone)
+            @Html.DisplayName("Telefone")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CEP)
+            @Html.DisplayName("CEP")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayName("Email")
         </th>
         <th></th>
     </tr>
@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ClienteID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ClienteID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ClienteID })
+            @Html.ActionLink("Editar", "Edit", new { id=item.ClienteID }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.ClienteID }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.ClienteID })
         </td>
     </tr>
 }
