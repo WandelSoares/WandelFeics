@@ -12,18 +12,18 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Tratamento.Descricao)
+            @Html.DisplayName("Data da Consulta")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Veterinario.NomeVeterinario)
+            @Html.DisplayName("Tipo de Tratamento")
+        </th>
+        <th>
+            @Html.DisplayName("Nome do Veterinario")
         </th>
       
-     
+       
         <th>
-            @Html.DisplayNameFor(model => model.DataConsulta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Historico)
+            @Html.DisplayName("Histórico")
         </th>
         <th></th>
     </tr>
@@ -31,14 +31,15 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.DataConsulta)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Tratamento.Descricao)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Veterinario.NomeVeterinario)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataConsulta)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.Historico)
         </td>

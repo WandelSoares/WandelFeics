@@ -12,7 +12,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Tratamento.Descricao)
+            @Html.DisplayName("Data da Consulta:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataConsulta)
+        </dd>
+        <dt>
+            @Html.DisplayName("tipo de Tratamento:")
         </dt>
 
         <dd>
@@ -20,23 +27,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Veterinario.NomeVeterinario)
+            @Html.DisplayName("Nome do Veterinario:")
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Veterinario.NomeVeterinario)
         </dd>
 
+        
         <dt>
-            @Html.DisplayNameFor(model => model.DataConsulta)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DataConsulta)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Historico)
+            @Html.DisplayName("Histórico:")
         </dt>
 
         <dd>

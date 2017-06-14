@@ -12,19 +12,21 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Cliente.Nome)
+            @Html.DisplayName("Nome do Animal")
+        </th>
+        
+        <th>
+            @Html.DisplayName("Espécie")
+        </th>
+        
+        <th>
+            @Html.DisplayName("Idade")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Especie.NomeEspecie)
+            @Html.DisplayName("Sexo")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NomeAnimal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdadeAnimal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SexoAnimal)
+            @Html.DisplayName("Cliente")
         </th>
         <th></th>
     </tr>
@@ -32,19 +34,21 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Cliente.Nome)
+            @Html.DisplayFor(modelItem => item.NomeAnimal)
         </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.Especie.NomeEspecie)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomeAnimal)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.IdadeAnimal)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SexoAnimal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.Nome)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.AnimalID }) |
