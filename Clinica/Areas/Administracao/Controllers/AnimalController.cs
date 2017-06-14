@@ -16,13 +16,36 @@ namespace Areas.Administracao.Controllers
         private ContextoEF db = new ContextoEF();
 
         // GET: Animal
-        public ActionResult Index(int? pagina)
+        public ActionResult Index(string ordenacao, int? pagina)
         {
+            ViewBag.OrdenacaoAtual = ordenacao;
+            ViewBag.NomeParam = string.IsNullOrEmpty(ordenacao) ? "Nome_desc" : "";
+            ViewBag.especieParam = ordenacao == "Especie" ? "Especie_desc" : "Especie";
+
+            var animal = from a in db.Animais select a;
+
             int tamanhoPagina = 5;
             int numeroPagina = pagina ?? 1;
 
-            var animais = db.Animais.Include(a => a.Cliente).Include(a => a.Especie);
-            return View(animais.OrderBy(p => p.NomeAnimal).ToPagedList(numeroPagina, tamanhoPagina));
+            switch (ordenacao)
+            {
+                case "Nome_desc":
+                    animal = animal.OrderByDescending(s => s.NomeAnimal);
+                    break;
+                case "Especie":
+                    animal = animal.OrderBy(s => s.EspecieID);
+                    break;
+                case "Especie_desc":
+                    animal = animal.OrderByDescending(s => s.EspecieID);
+                    break;
+                default:
+                    animal = animal.OrderBy(s => s.NomeAnimal);
+                    break;
+            }
+
+            
+        var animais = db.Animais.Include(a => a.Cliente).Include(a => a.Especie);
+            return View(animal.ToPagedList(numeroPagina, tamanhoPagina));
         }
 
         // GET: Animal/Details/5

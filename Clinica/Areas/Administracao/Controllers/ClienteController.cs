@@ -16,14 +16,36 @@ namespace Areas.Administracao.Controllers
         private ContextoEF db = new ContextoEF();
 
         // GET: Cliente
-        public ActionResult Index(int? pagina)
+        public ActionResult Index(string ordenacao, int? pagina)
         {
+            ViewBag.OrdenacaoAtual = ordenacao;
+            ViewBag.NomeParam = string.IsNullOrEmpty(ordenacao) ? "Nome_desc" : "";
+            ViewBag.EmailParam = ordenacao == "Email" ? "Email_desc" : "Email";
+
+            var clientes = from c in db.Clientes select c;
+
             int tamanhoPagina = 5;
             int numeroPagina = pagina ?? 1;
 
-            return View(db.Clientes.OrderBy(p => p.Nome).ToPagedList(numeroPagina, tamanhoPagina));
-        }
+            switch (ordenacao)
+            {
+                case "Nome_desc":
+                    clientes = clientes.OrderByDescending(s => s.Nome);
+                    break;
+                case "Email":
+                    clientes = clientes.OrderBy(s => s.Email);
+                    break;
+                case "Email_desc":
+                    clientes = clientes.OrderByDescending(s => s.Email);
+                    break;
+                default:
+                    clientes = clientes.OrderBy(s => s.Nome);
+                    break;
+            }
 
+            return View(clientes.ToPagedList(numeroPagina, tamanhoPagina));
+        }
+        
         // GET: Cliente/Details/5
         public ActionResult Details(int? id)
         {

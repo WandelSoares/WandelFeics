@@ -14,7 +14,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayName("Nome")
+            @Html.ActionLink("Nome", "Index", new { ordenacao = ViewBag.NomeParam })
+        </th>
+        <th>
+            @Html.ActionLink("E-mail", "Index", new { ordenacao = ViewBag.EmailParam })
         </th>
         <th>
             @Html.DisplayName("Endereço")
@@ -25,9 +28,7 @@
         <th>
             @Html.DisplayName("CEP")
         </th>
-        <th>
-            @Html.DisplayName("E-mail")
-        </th>
+        
         <th></th>
     </tr>
 
@@ -35,6 +36,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Endereco)
@@ -45,9 +49,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.CEP)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
+        
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.ClienteID }) |
             @Html.ActionLink("Detalhes", "Details", new { id=item.ClienteID }) |
@@ -59,4 +61,4 @@
 </table>
 
 Página @Model.PageNumber de @Model.PageCount 
-@Html.PagedListPager(Model, Page => Url.Action("Index", new { pagina = Page }))
+@Html.PagedListPager(Model, Page => Url.Action("Index", new { pagina = Page, ordenacao = ViewBag.OrdencaoAtual }))
