@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Clinica.Models;
+using PagedList;
 
 namespace Areas.Administracao.Controllers
 {
@@ -15,10 +16,13 @@ namespace Areas.Administracao.Controllers
         private ContextoEF db = new ContextoEF();
 
         // GET: Consulta
-        public ActionResult Index()
+        public ActionResult Index(int? pagina)
         {
+            int tamanhoPagina = 5;
+            int numeroPagina = pagina ?? 1;
+
             var consultas = db.Consultas.Include(c => c.Tratamento).Include(c => c.Veterinario);
-            return View(consultas.ToList());
+            return View(consultas.OrderBy(p => p.ConsultaID).ToPagedList(numeroPagina, tamanhoPagina));
         }
 
         // GET: Consulta/Details/5

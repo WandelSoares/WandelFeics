@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Clinica.Models.Animal>
+﻿@model PagedList.IPagedList<Clinica.Models.Animal>
+@using PagedList
+@using PagedList.Mvc
 
 @{
     ViewBag.Title = "Index";
@@ -59,3 +61,6 @@
 }
 
 </table>
+
+Página @Model.PageNumber de @Model.PageCount
+@Html.PagedListPager(Model, Page => Url.Action("Index", new { pagina = Page }))
