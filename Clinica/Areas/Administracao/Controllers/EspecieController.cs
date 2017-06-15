@@ -16,12 +16,27 @@ namespace Areas.Administracao.Controllers
         private ContextoEF db = new ContextoEF();
 
         // GET: Especie
-        public ActionResult Index(int? pagina)
+        public ActionResult Index(string ordenacao, int? pagina)
         {
+            ViewBag.OrdenacaoAtual = ordenacao;
+            ViewBag.NomeParam = string.IsNullOrEmpty(ordenacao) ? "Nome_desc" : "";
+
+            var especie = from e in db.Especies select e;
+
             int tamanhoPagina = 5;
             int numeroPagina = pagina ?? 1;
 
-            return View(db.Especies.OrderBy(p => p.NomeEspecie).ToPagedList(numeroPagina, tamanhoPagina));
+            switch (ordenacao)
+            {
+                case "Nome_desc":
+                    especie = especie.OrderByDescending(s => s.NomeEspecie);
+                    break;
+                default:
+                    especie = especie.OrderBy(s => s.NomeEspecie);
+                    break;
+            }
+
+            return View(especie.ToPagedList(numeroPagina, tamanhoPagina));
         }
 
         // GET: Especie/Details/5

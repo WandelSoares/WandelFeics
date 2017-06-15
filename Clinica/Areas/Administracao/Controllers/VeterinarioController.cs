@@ -16,12 +16,28 @@ namespace Areas.Administracao.Controllers
         private ContextoEF db = new ContextoEF();
 
         // GET: Veterinario
-        public ActionResult Index(int? pagina)
+        public ActionResult Index(string ordenacao, int? pagina)
         {
+            ViewBag.OrdenacaoAtual = ordenacao;
+            ViewBag.NomeParam = string.IsNullOrEmpty(ordenacao) ? "Nome_desc" : "";
+           
+            var veterinario = from v in db.Veterinarios select v;
+
             int tamanhoPagina = 5;
             int numeroPagina = pagina ?? 1;
 
-            return View(db.Veterinarios.OrderBy(p => p.NomeVeterinario).ToPagedList(numeroPagina, tamanhoPagina));
+            switch (ordenacao)
+            {
+                case "Nome_desc":
+                    veterinario = veterinario.OrderByDescending(s => s.NomeVeterinario);
+                break;
+                default:
+                    veterinario = veterinario.OrderBy(s => s.NomeVeterinario);
+                break;
+            }
+
+
+            return View(veterinario.ToPagedList(numeroPagina, tamanhoPagina));
         }
 
         // GET: Veterinario/Details/5

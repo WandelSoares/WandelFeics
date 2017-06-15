@@ -16,13 +16,36 @@ namespace Areas.Administracao.Controllers
         private ContextoEF db = new ContextoEF();
 
         // GET: Consulta
-        public ActionResult Index(int? pagina)
+        public ActionResult Index(string ordenacao, int? pagina)
         {
+            ViewBag.OrdenacaoAtual = ordenacao;
+            ViewBag.DataParam = string.IsNullOrEmpty(ordenacao) ? "Data_desc" : "";
+            ViewBag.VeterinarioParam = ordenacao == "Veterinario" ? "Veterinario_desc" : "Veterinario";
+
+            var consulta = from c in db.Consultas select c;
+
             int tamanhoPagina = 5;
             int numeroPagina = pagina ?? 1;
 
+            switch (ordenacao)
+            {
+                case "Data_desc":
+                    consulta = consulta.OrderByDescending(s => s.DataConsulta);
+                    break;
+                case "Veterinario":
+                    consulta = consulta.OrderBy(s => s.VeterinarioID);
+                    break;
+                case "Veterinario_desc":
+                    consulta = consulta.OrderByDescending(s => s.VeterinarioID);
+                    break;
+                default:
+                    consulta = consulta.OrderBy(s => s.DataConsulta);
+                    break;
+            }
+
+
             var consultas = db.Consultas.Include(c => c.Tratamento).Include(c => c.Veterinario);
-            return View(consultas.OrderBy(p => p.ConsultaID).ToPagedList(numeroPagina, tamanhoPagina));
+            return View(consulta.ToPagedList(numeroPagina, tamanhoPagina));
         }
 
         // GET: Consulta/Details/5

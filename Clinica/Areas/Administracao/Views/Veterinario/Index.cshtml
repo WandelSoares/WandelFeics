@@ -14,8 +14,9 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayName("Nome")
+            @Html.ActionLink("Nome", "Index", new { ordenacao = ViewBag.NomeParam })
         </th>
+
         <th>
             @Html.DisplayName("Endereço")
         </th>
@@ -47,4 +48,4 @@
 </table>
 
 Página @Model.PageNumber de @Model.PageCount
-@Html.PagedListPager(Model, Page => Url.Action("Index", new { pagina = Page }))
+@Html.PagedListPager(Model, Page => Url.Action("Index", new { pagina = Page, ordenacao = ViewBag.OrdencaoAtual }))

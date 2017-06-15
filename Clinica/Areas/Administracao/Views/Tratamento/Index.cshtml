@@ -14,10 +14,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayName("Tipo de Tratamento")
+            @Html.ActionLink("Tipo de Tratamento", "Index", new { ordenacao = ViewBag.DescricaoParam })
         </th>
         <th>
-            @Html.DisplayName("Nome do Animal")
+            @Html.ActionLink("Nome do Animal", "Index", new { ordenacao = ViewBag.NomeParam })
         </th>
         <th>
             @Html.DisplayName("Data Inicio")
@@ -53,4 +53,5 @@
 </table>
 
 Página @Model.PageNumber de @Model.PageCount
-@Html.PagedListPager(Model, Page => Url.Action("Index", new { pagina = Page }))
+@Html.PagedListPager(Model, Page => Url.Action("Index", new { pagina = Page, ordenacao = ViewBag.OrdencaoAtual }))
+

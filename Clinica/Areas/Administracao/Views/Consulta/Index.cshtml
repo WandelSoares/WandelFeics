@@ -14,15 +14,15 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayName("Data da Consulta")
+            @Html.ActionLink("Data Consulta", "Index", new { ordenacao = ViewBag.DataParam })
+        </th>
+        <th>
+            @Html.ActionLink("Nome do Veterinario", "Index", new { ordenacao = ViewBag.VeterinarioParam })
         </th>
         <th>
             @Html.DisplayName("Tipo de Tratamento")
         </th>
-        <th>
-            @Html.DisplayName("Nome do Veterinario")
-        </th>
-      
+             
        
         <th>
             @Html.DisplayName("Histórico")
@@ -36,12 +36,12 @@
             @Html.DisplayFor(modelItem => item.DataConsulta)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Tratamento.Descricao)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Veterinario.NomeVeterinario)
         </td>
-        
+        <td>
+            @Html.DisplayFor(modelItem => item.Tratamento.Descricao)
+        </td>
+                
         <td>
             @Html.DisplayFor(modelItem => item.Historico)
         </td>
@@ -56,6 +56,6 @@
 </table>
 
 Página @Model.PageNumber de @Model.PageCount
-@Html.PagedListPager(Model, Page => Url.Action("Index", new { pagina = Page }))
+@Html.PagedListPager(Model, Page => Url.Action("Index", new { pagina = Page, ordenacao = ViewBag.OrdencaoAtual }))
 
 
