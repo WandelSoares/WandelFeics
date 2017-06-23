@@ -15,6 +15,25 @@ namespace Areas.Administracao.Controllers
     {
         private ContextoEF db = new ContextoEF();
 
+        public ActionResult buscarConsulta(int? pagina, string Historico = null)
+        {
+            int tamanhoPagina = 5;
+            int numeroPagina = pagina ?? 1;
+            var consulta = new object();
+            if (!string.IsNullOrEmpty(Historico))
+            {
+                consulta = db.Consultas
+                    .Where(c => c.Historico.ToUpper().Contains(Historico.ToUpper()))
+                    .OrderBy(c => c.Historico).ToPagedList(numeroPagina, tamanhoPagina);
+
+            }
+            else
+            {
+                consulta = db.Consultas.OrderBy(c => c.Historico).ToPagedList(numeroPagina, tamanhoPagina);
+            }
+            return View("Index", consulta);
+        }
+
         // GET: Consulta
         public ActionResult Index(string ordenacao, int? pagina)
         {

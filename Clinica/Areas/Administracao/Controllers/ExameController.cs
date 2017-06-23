@@ -15,6 +15,25 @@ namespace Areas.Administracao.Controllers
     {
         private ContextoEF db = new ContextoEF();
 
+        public ActionResult ConsultarExame(int? pagina, string DescricaoExame = null)
+        {
+            int tamanhoPagina = 5;
+            int numeroPagina = pagina ?? 1;
+            var exame = new object();
+            if (!string.IsNullOrEmpty(DescricaoExame))
+            {
+                exame = db.Exames
+                    .Where(a => a.DescricaoExame.ToUpper().Contains(DescricaoExame.ToUpper()))
+                    .OrderBy(a => a.DescricaoExame).ToPagedList(numeroPagina, tamanhoPagina);
+
+            }
+            else
+            {
+                exame = db.Exames.OrderBy(a => a.DescricaoExame).ToPagedList(numeroPagina, tamanhoPagina);
+            }
+            return View("Index", exame);
+        }
+
         // GET: Exame
         public ActionResult Index(string ordenacao, int? pagina)
         {

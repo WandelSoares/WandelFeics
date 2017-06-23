@@ -8,6 +8,16 @@
 
 <h2>Espécie</h2>
 
+<form method="get" action="/Administracao/Especie/ConsultarEspecie">
+    <p>
+        <input type="search" name="NomeEspecie" />
+        <input type="submit" value="Pesquisar" /> <input type="submit" value="Mostar Todos" />
+    </p>
+
+
+</form>
+
+
 <p>
     @Html.ActionLink("Cadastrar Espécie", "Create")
 </p>

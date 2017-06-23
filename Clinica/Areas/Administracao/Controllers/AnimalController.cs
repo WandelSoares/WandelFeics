@@ -15,6 +15,25 @@ namespace Areas.Administracao.Controllers
     {
         private ContextoEF db = new ContextoEF();
 
+        public ActionResult ConsultarAnimal(int? pagina, string nomeAnimal = null)
+        {
+            int tamanhoPagina = 5;
+            int numeroPagina = pagina ?? 1;
+            var animal = new object();
+            if (!string.IsNullOrEmpty(nomeAnimal))
+            {
+                animal = db.Animais
+                    .Where(a => a.NomeAnimal.ToUpper().Contains(nomeAnimal.ToUpper()))
+                    .OrderBy(a => a.NomeAnimal).ToPagedList(numeroPagina, tamanhoPagina);
+
+            }
+            else
+            {
+                animal = db.Animais.OrderBy(a => a.NomeAnimal).ToPagedList(numeroPagina, tamanhoPagina);
+            }
+            return View("Index", animal);
+        }
+
         // GET: Animal
         public ActionResult Index(string ordenacao, int? pagina)
         {

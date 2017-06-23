@@ -71,4 +71,16 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jquerymask")
+
+<script>
+
+        $(document).ready(function () {
+            $("#CEP").mask("99999-999");
+            $("#Telefone").mask("(99)99999-9999");
+
+
+        });
+
+</script>
 }

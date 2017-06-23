@@ -15,6 +15,25 @@ namespace Areas.Administracao.Controllers
     {
         private ContextoEF db = new ContextoEF();
 
+        public ActionResult ConsultarEspecie(int? pagina, string NomeEspecie = null)
+        {
+            int tamanhoPagina = 5;
+            int numeroPagina = pagina ?? 1;
+            var especies = new object();
+            if (!string.IsNullOrEmpty(NomeEspecie))
+            {
+                especies = db.Especies
+                    .Where(t => t.NomeEspecie.ToUpper().Contains(NomeEspecie.ToUpper()))
+                    .OrderBy(t => t.NomeEspecie).ToPagedList(numeroPagina, tamanhoPagina);
+
+            }
+            else
+            {
+                especies = db.Especies.OrderBy(t => t.NomeEspecie).ToPagedList(numeroPagina, tamanhoPagina);
+            }
+            return View("Index", especies);
+        }
+
         // GET: Especie
         public ActionResult Index(string ordenacao, int? pagina)
         {

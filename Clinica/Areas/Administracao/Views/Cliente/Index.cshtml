@@ -8,6 +8,15 @@
 
 <h2>Cliente</h2>
 
+<form method="get" action="/Administracao/Cliente/ConsultarCliente">
+    <p>
+        <input type="search" name="nome" />
+        <input type="submit" value="Pesquisar" /> <input type="submit" value="Mostar Todos" />
+    </p>
+
+
+</form>
+
 <p>
     @Html.ActionLink("Cadastrar Cliente", "Create")
 </p>

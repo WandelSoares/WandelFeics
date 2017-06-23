@@ -15,6 +15,25 @@ namespace Areas.Administracao.Controllers
     {
         private ContextoEF db = new ContextoEF();
 
+        public ActionResult ConsultarCliente(int? pagina, string Nome = null)
+        {
+            int tamanhoPagina = 5;
+            int numeroPagina = pagina ?? 1;
+            var cliente = new object();
+            if (!string.IsNullOrEmpty(Nome))
+            {
+                cliente = db.Clientes
+                    .Where(t => t.Nome.ToUpper().Contains(Nome.ToUpper()))
+                    .OrderBy(t => t.Nome).ToPagedList(numeroPagina, tamanhoPagina);
+
+            }
+            else
+            {
+                cliente = db.Clientes.OrderBy(c => c.Nome).ToPagedList(numeroPagina, tamanhoPagina);
+            }
+            return View("Index", cliente);
+        }
+
         // GET: Cliente
         public ActionResult Index(string ordenacao, int? pagina)
         {

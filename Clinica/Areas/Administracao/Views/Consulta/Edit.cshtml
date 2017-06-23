@@ -62,5 +62,15 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+   
+     @Scripts.Render("~/bundles/jqueryval")
+<script>
+
+        $(document).ready(function () {
+            $("#DataConsulta").datepicker()
+            .mask("99/99/9999", { placeholder: "dd/mm/aaaa" });
+
+        });
+
+</script>
 }
