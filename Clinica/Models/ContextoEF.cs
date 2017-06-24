@@ -9,7 +9,7 @@ namespace Clinica.Models
 {
     public class ContextoEF : DbContext
     {
-        public ContextoEF() : base("name=DefaultConnection")
+        public ContextoEF() : base("name=StrConexao")
         {
 
         }
