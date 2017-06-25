@@ -75,7 +75,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Veterinario/Create
-        public ActionResult Create()
+        public ActionResult Cadastrar()
         {
             return View();
         }
@@ -85,7 +85,7 @@ namespace Areas.Administracao.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "VeterinarioID,NomeVeterinario,EnderecoVeterinario,TelefoneVeterinario")] Veterinario veterinario)
+        public ActionResult Cadastrar([Bind(Include = "VeterinarioID,NomeVeterinario,EnderecoVeterinario,TelefoneVeterinario")] Veterinario veterinario)
         {
             if (ModelState.IsValid)
             {

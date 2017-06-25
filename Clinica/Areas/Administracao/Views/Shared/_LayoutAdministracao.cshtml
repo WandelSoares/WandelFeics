@@ -4,9 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
     <title>@ViewBag.Title - Administração</title>
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/themes/base/css")
-    @Scripts.Render("~/bundles/modernizr")
+   
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
@@ -57,7 +55,7 @@
                 try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
             </script>
 
-            <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+            @*<div class="sidebar-shortcuts" id="sidebar-shortcuts">
                 <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
                     <button class="btn btn-success">
                         <i class="ace-icon fa fa-signal"></i>
@@ -85,7 +83,7 @@
 
                     <span class="btn btn-danger"></span>
                 </div>
-            </div><!-- /.sidebar-shortcuts -->
+            </div><!-- /.sidebar-shortcuts -->*@
 
             @Html.Action("NavigatorBarList", "Base")
 

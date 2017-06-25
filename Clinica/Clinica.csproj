@@ -614,7 +614,7 @@
     <Content Include="Areas\Administracao\Views\Exame\Details.cshtml" />
     <Content Include="Areas\Administracao\Views\Exame\Edit.cshtml" />
     <Content Include="Areas\Administracao\Views\Exame\Index.cshtml" />
-    <Content Include="Areas\Administracao\Views\Veterinario\Create.cshtml" />
+    <Content Include="Areas\Administracao\Views\Veterinario\Cadastrar.cshtml" />
     <Content Include="Areas\Administracao\Views\Veterinario\Delete.cshtml" />
     <Content Include="Areas\Administracao\Views\Veterinario\Details.cshtml" />
     <Content Include="Areas\Administracao\Views\Veterinario\Edit.cshtml" />
@@ -686,7 +686,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55129</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
