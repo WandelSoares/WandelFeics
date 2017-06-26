@@ -11,16 +11,13 @@
 <form method="get" action="/Administracao/Animal/ConsultarAnimal">
     <p>
         <input type="search" name="nomeAnimal" />
-        <input type="submit" value="Pesquisar" /> <input type="submit" value="Mostar Todos" />
+        <input type="submit" value="Pesquisar" class="btn btn-success" /> <input type="submit" value="Mostar Todos" class="btn btn-success" />
     </p>
 
 
 </form>
 
 
-<p>
-    @Html.ActionLink("Cadastrar Animal", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -63,9 +60,9 @@
             @Html.DisplayFor(modelItem => item.Cliente.Nome)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.AnimalID }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.AnimalID }) |
-            @Html.ActionLink("Excluir", "Delete", new { id=item.AnimalID })
+            <a href="@Url.Action("Editar", new { id=item.AnimalID})" title="Editar" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i></a>
+            <a href="@Url.Action("Detalhes", new { id=item.AnimalID })" title="Detalhes" class="btn btn-success"><i class="glyphicon glyphicon-eye-open"></i></a>
+            <a href="@Url.Action("Excluir", new { id=item.AnimalID })" title="Excluir" class="btn btn-danger"><i class="glyphicon glyphicon-remove-circle"></i></a>
         </td>
     </tr>
 }

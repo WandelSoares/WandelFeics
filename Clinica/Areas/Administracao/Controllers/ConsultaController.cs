@@ -68,7 +68,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Consulta/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Detalhes(int? id)
         {
             if (id == null)
             {
@@ -83,7 +83,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Consulta/Create
-        public ActionResult Create()
+        public ActionResult Cadastrar()
         {
             ViewBag.TratamentoID = new SelectList(db.Tratamentos, "TratamentoID", "Descricao");
             ViewBag.VeterinarioID = new SelectList(db.Veterinarios, "VeterinarioID", "NomeVeterinario");
@@ -95,7 +95,7 @@ namespace Areas.Administracao.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ConsultaID,TratamentoID,VeterinarioID,DataConsulta,Historico")] Consulta consulta)
+        public ActionResult Cadastrar([Bind(Include = "ConsultaID,TratamentoID,VeterinarioID,DataConsulta,Historico")] Consulta consulta)
         {
             if (ModelState.IsValid)
             {
@@ -110,7 +110,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Consulta/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Editar(int? id)
         {
             if (id == null)
             {
@@ -131,7 +131,7 @@ namespace Areas.Administracao.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ConsultaID,TratamentoID,VeterinarioID,DataConsulta,Historico")] Consulta consulta)
+        public ActionResult Editar([Bind(Include = "ConsultaID,TratamentoID,VeterinarioID,DataConsulta,Historico")] Consulta consulta)
         {
             if (ModelState.IsValid)
             {
@@ -145,7 +145,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Consulta/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Excluir(int? id)
         {
             if (id == null)
             {
@@ -160,9 +160,9 @@ namespace Areas.Administracao.Controllers
         }
 
         // POST: Consulta/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Excluir")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult ConfirmaExclusao(int id)
         {
             Consulta consulta = db.Consultas.Find(id);
             db.Consultas.Remove(consulta);

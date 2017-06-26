@@ -59,7 +59,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Exame/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Detalhes(int? id)
         {
             if (id == null)
             {
@@ -74,7 +74,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Exame/Create
-        public ActionResult Create()
+        public ActionResult Cadastrar()
         {
             return View();
         }
@@ -84,7 +84,7 @@ namespace Areas.Administracao.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ExameID,ConsultaID,DescricaoExame")] Exame exame)
+        public ActionResult Cadastrar([Bind(Include = "ExameID,ConsultaID,DescricaoExame")] Exame exame)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Exame/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Editar(int? id)
         {
             if (id == null)
             {
@@ -116,7 +116,7 @@ namespace Areas.Administracao.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ExameID,ConsultaID,DescricaoExame")] Exame exame)
+        public ActionResult Editar([Bind(Include = "ExameID,ConsultaID,DescricaoExame")] Exame exame)
         {
             if (ModelState.IsValid)
             {
@@ -128,7 +128,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Exame/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Excluir(int? id)
         {
             if (id == null)
             {
@@ -143,9 +143,9 @@ namespace Areas.Administracao.Controllers
         }
 
         // POST: Exame/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Excluir")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult ConfirmaExclusao(int id)
         {
             Exame exame = db.Exames.Find(id);
             db.Exames.Remove(exame);

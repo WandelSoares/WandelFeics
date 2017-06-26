@@ -1,12 +1,11 @@
 ﻿@model Clinica.Models.Consulta
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Detalhes";
 }
 
-<h2>Excluir</h2>
+<h2>Detalhes</h2>
 
-<h3>Tem certeza de que deseja excluir?</h3>
 <div>
     <h4>Consulta</h4>
     <hr />
@@ -19,7 +18,7 @@
             @Html.DisplayFor(model => model.DataConsulta)
         </dd>
         <dt>
-            @Html.DisplayName("tipo de Tratamento:")
+            @Html.DisplayName("tipo de tratamento:")
         </dt>
 
         <dd>
@@ -35,6 +34,7 @@
         </dd>
 
         
+
         <dt>
             @Html.DisplayName("Histórico:")
         </dt>
@@ -44,13 +44,15 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Excluir" class="btn btn-default" /> |
-            @Html.ActionLink("Voltar", "Index")
-        </div>
-    }
 </div>
+<div>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+    <a href="@Url.Action("Editar",new { id = Model.ConsultaID })" title="Editar" class="btn btn-success">
+        <p>Editar</p>
+    </a>
+    &nbsp;
+    <a href="@Url.Action("Index")" title="Ir para lista" class="btn btn-success">
+        <p>Ir para lista</p>
+    </a>
+</div>
+

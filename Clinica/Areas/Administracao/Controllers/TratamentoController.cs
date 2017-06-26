@@ -68,7 +68,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Tratamento/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Detalhes(int? id)
         {
             if (id == null)
             {
@@ -83,7 +83,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Tratamento/Create
-        public ActionResult Create()
+        public ActionResult Cadastrar()
         {
             ViewBag.AnimalID = new SelectList(db.Animais, "AnimalID", "NomeAnimal");
             return View();
@@ -94,7 +94,7 @@ namespace Areas.Administracao.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TratamentoID,AnimalID,Descricao,DataInicio,DataFim")] Tratamento tratamento)
+        public ActionResult Cadastrar([Bind(Include = "TratamentoID,AnimalID,Descricao,DataInicio,DataFim")] Tratamento tratamento)
         {
             if (ModelState.IsValid)
             {
@@ -108,7 +108,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Tratamento/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Editar(int? id)
         {
             if (id == null)
             {
@@ -128,7 +128,7 @@ namespace Areas.Administracao.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TratamentoID,AnimalID,Descricao,DataInicio,DataFim")] Tratamento tratamento)
+        public ActionResult Editar([Bind(Include = "TratamentoID,AnimalID,Descricao,DataInicio,DataFim")] Tratamento tratamento)
         {
             if (ModelState.IsValid)
             {
@@ -141,7 +141,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Tratamento/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Excluir(int? id)
         {
             if (id == null)
             {
@@ -156,9 +156,9 @@ namespace Areas.Administracao.Controllers
         }
 
         // POST: Tratamento/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Excluir")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult ConfirmaExclusao(int id)
         {
             Tratamento tratamento = db.Tratamentos.Find(id);
             db.Tratamentos.Remove(tratamento);

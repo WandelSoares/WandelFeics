@@ -68,7 +68,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Animal/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Detalhes(int? id)
         {
             if (id == null)
             {
@@ -83,7 +83,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Animal/Create
-        public ActionResult Create()
+        public ActionResult Cadastrar()
         {
             ViewBag.ClienteID = new SelectList(db.Clientes, "ClienteID", "Nome");
             ViewBag.EspecieID = new SelectList(db.Especies, "EspecieID", "NomeEspecie");
@@ -95,7 +95,7 @@ namespace Areas.Administracao.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AnimalID,ClienteID,EspecieID,NomeAnimal,IdadeAnimal,SexoAnimal")] Animal animal)
+        public ActionResult Cadastrar([Bind(Include = "AnimalID,ClienteID,EspecieID,NomeAnimal,IdadeAnimal,SexoAnimal")] Animal animal)
         {
             if (ModelState.IsValid)
             {
@@ -110,7 +110,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Animal/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Editar(int? id)
         {
             if (id == null)
             {
@@ -131,7 +131,7 @@ namespace Areas.Administracao.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AnimalID,ClienteID,EspecieID,NomeAnimal,IdadeAnimal,SexoAnimal")] Animal animal)
+        public ActionResult Editar([Bind(Include = "AnimalID,ClienteID,EspecieID,NomeAnimal,IdadeAnimal,SexoAnimal")] Animal animal)
         {
             if (ModelState.IsValid)
             {
@@ -145,7 +145,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Animal/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Excluir(int? id)
         {
             if (id == null)
             {
@@ -160,9 +160,9 @@ namespace Areas.Administracao.Controllers
         }
 
         // POST: Animal/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Excluir")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult ConfirmaExclusao(int id)
         {
             Animal animal = db.Animais.Find(id);
             db.Animais.Remove(animal);

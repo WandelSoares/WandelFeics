@@ -11,16 +11,13 @@
 <form method="get" action="/Administracao/Tratamento/ConsultarTratamento">
     <p>
         <input type="search" name="Descricao" />
-        <input type="submit" value="Pesquisar" /> <input type="submit" value="Mostar Todos" />
+        <input type="submit" value="Pesquisar" class="btn btn-success" /> <input type="submit" value="Mostar Todos" class="btn btn-success" />
     </p>
 
 
 </form>
 
 
-<p>
-    @Html.ActionLink("Cadastrar Tratamento", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -53,9 +50,10 @@
             @Html.DisplayFor(modelItem => item.DataFim)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.TratamentoID }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.TratamentoID }) |
-            @Html.ActionLink("Excluir", "Delete", new { id=item.TratamentoID })
+            <a href="@Url.Action("Editar", new { id=item.TratamentoID})" title="Editar" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i></a>
+            <a href="@Url.Action("Detalhes", new { id=item.TratamentoID })" title="Detalhes" class="btn btn-success"><i class="glyphicon glyphicon-eye-open"></i></a>
+            <a href="@Url.Action("Excluir", new { id=item.TratamentoID })" title="Excluir" class="btn btn-danger"><i class="glyphicon glyphicon-remove-circle"></i></a>
+            
         </td>
     </tr>
 }

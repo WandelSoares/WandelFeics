@@ -1,11 +1,12 @@
 ﻿@model Clinica.Models.Cliente
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Excluir";
 }
 
-<h2>Detalhes</h2>
+<h2>Excluir</h2>
 
+<h3>Tem certeza de que deseja excluir?</h3>
 <div>
     <h4>Cliente</h4>
     <hr />
@@ -51,8 +52,19 @@
         </dd>
 
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            <a href="@Url.Action("Index")" title="Ir para lista" class="btn btn-success">
+                <p>Ir para lista</p>
+            </a>
+            &nbsp; 
+            <input type="submit" value="Excluir" title="Excluir" class="btn btn-danger" /> 
+                       
+            
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.ClienteID }) |
-    @Html.ActionLink("Voltar", "Index")
-</p>

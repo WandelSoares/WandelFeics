@@ -1,7 +1,7 @@
 ﻿@model Clinica.Models.Veterinario
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Excluir";
 }
 
 <h2>Excluir</h2>
@@ -41,8 +41,13 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Excluir" class="btn btn-default" /> |
-            @Html.ActionLink("Voltar", "Index")
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <a href="@Url.Action("Index")" title="Ir para lista" class="btn btn-success">
+                <p>Ir para lista</p>
+            </a>
+            &nbsp;
+            <input type="submit" value="Excluir" title="Excluir" class="btn btn-danger" />
         </div>
+        
     }
 </div>

@@ -66,7 +66,7 @@ namespace Areas.Administracao.Controllers
         }
         
         // GET: Cliente/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Detalhes(int? id)
         {
             if (id == null)
             {
@@ -81,7 +81,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Cliente/Create
-        public ActionResult Create()
+        public ActionResult Cadastrar()
         {
             return View();
         }
@@ -91,7 +91,7 @@ namespace Areas.Administracao.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ClienteID,Nome,Endereco,Telefone,CEP,Email")] Cliente cliente)
+        public ActionResult Cadastrar([Bind(Include = "ClienteID,Nome,Endereco,Telefone,CEP,Email")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +104,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Cliente/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Editar(int? id)
         {
             if (id == null)
             {
@@ -123,7 +123,7 @@ namespace Areas.Administracao.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ClienteID,Nome,Endereco,Telefone,CEP,Email")] Cliente cliente)
+        public ActionResult Editar([Bind(Include = "ClienteID,Nome,Endereco,Telefone,CEP,Email")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -135,7 +135,7 @@ namespace Areas.Administracao.Controllers
         }
 
         // GET: Cliente/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Excluir(int? id)
         {
             if (id == null)
             {
@@ -150,9 +150,9 @@ namespace Areas.Administracao.Controllers
         }
 
         // POST: Cliente/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Excluir")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult ConfirmaExclusao(int id)
         {
             Cliente cliente = db.Clientes.Find(id);
             db.Clientes.Remove(cliente);
