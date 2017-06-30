@@ -16,6 +16,7 @@ namespace Clinica.Models
         public virtual Cliente Cliente { get; set; }
         public virtual Especie Especie { get; set; }
         public virtual ICollection<Tratamento> Tratamentos { get; set; }
+        public virtual ICollection<Consulta> Consultas { get; set; }
 
 
 

@@ -67,6 +67,17 @@ namespace Areas.Administracao.Controllers
             return View(consulta.ToPagedList(numeroPagina, tamanhoPagina));
         }
 
+
+        public ActionResult ObterConsultasPorExame(int id, int? pagina)
+        {
+            int tamanhoPagina = 5;
+            int numeroPagina = pagina ?? 1;
+
+            var consulta = from c in db.Consultas where c.Exame.ExameID == id select c;
+            return View("Index", consulta.OrderBy(x=>x.Exame.ExameID).ToPagedList(numeroPagina, tamanhoPagina));
+        }
+
+
         // GET: Consulta/Details/5
         public ActionResult Detalhes(int? id)
         {
@@ -87,6 +98,9 @@ namespace Areas.Administracao.Controllers
         {
             ViewBag.TratamentoID = new SelectList(db.Tratamentos, "TratamentoID", "Descricao");
             ViewBag.VeterinarioID = new SelectList(db.Veterinarios, "VeterinarioID", "NomeVeterinario");
+            ViewBag.AnimalID = new SelectList(db.Animais, "AnimalID", "NomeAnimal");
+            ViewBag.ExameID = new SelectList(db.Exames, "ExameID", "DescricaoExame");
+
             return View();
         }
 
@@ -95,7 +109,7 @@ namespace Areas.Administracao.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Cadastrar([Bind(Include = "ConsultaID,TratamentoID,VeterinarioID,DataConsulta,Historico")] Consulta consulta)
+        public ActionResult Cadastrar(Consulta consulta)
         {
             if (ModelState.IsValid)
             {
@@ -106,6 +120,8 @@ namespace Areas.Administracao.Controllers
 
             ViewBag.TratamentoID = new SelectList(db.Tratamentos, "TratamentoID", "Descricao", consulta.TratamentoID);
             ViewBag.VeterinarioID = new SelectList(db.Veterinarios, "VeterinarioID", "NomeVeterinario", consulta.VeterinarioID);
+            ViewBag.ExameID = new SelectList(db.Exames, "ExameID", "DescricaoExame");
+
             return View(consulta);
         }
 
@@ -123,6 +139,9 @@ namespace Areas.Administracao.Controllers
             }
             ViewBag.TratamentoID = new SelectList(db.Tratamentos, "TratamentoID", "Descricao", consulta.TratamentoID);
             ViewBag.VeterinarioID = new SelectList(db.Veterinarios, "VeterinarioID", "NomeVeterinario", consulta.VeterinarioID);
+            ViewBag.AnimalID = new SelectList(db.Animais, "AnimalID", "NomeAnimal", consulta.AnimalID);
+            ViewBag.ExameID = new SelectList(db.Exames, "ExameID", "DescricaoExame");
+
             return View(consulta);
         }
 
@@ -131,7 +150,7 @@ namespace Areas.Administracao.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar([Bind(Include = "ConsultaID,TratamentoID,VeterinarioID,DataConsulta,Historico")] Consulta consulta)
+        public ActionResult Editar(Consulta consulta)
         {
             if (ModelState.IsValid)
             {
@@ -141,6 +160,7 @@ namespace Areas.Administracao.Controllers
             }
             ViewBag.TratamentoID = new SelectList(db.Tratamentos, "TratamentoID", "Descricao", consulta.TratamentoID);
             ViewBag.VeterinarioID = new SelectList(db.Veterinarios, "VeterinarioID", "NomeVeterinario", consulta.VeterinarioID);
+            ViewBag.AnimalID = new SelectList(db.Animais, "AnimalID", "NomeAnimal", consulta.AnimalID);
             return View(consulta);
         }
 

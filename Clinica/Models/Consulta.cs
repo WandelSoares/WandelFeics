@@ -10,10 +10,13 @@ namespace Clinica.Models
         public int ConsultaID { get; set; }
         public int TratamentoID { get; set; }
         public int VeterinarioID { get; set; }
+        public int ExameID { get; set; }
         public DateTime DataConsulta { get; set; }
         public string Historico { get; set; }
         public virtual Tratamento Tratamento { get; set; }
         public virtual Exame Exame { get; set; }
         public virtual Veterinario Veterinario { get; set; }
+        public int? AnimalID { get; set; }
+        public virtual Animal Animal { get; set; }
     }
 }

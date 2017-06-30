@@ -8,7 +8,6 @@ namespace Clinica.Models
     public class Exame
     {
         public int ExameID { get; set; }
-        public int ConsultaID { get; set; }
         public string DescricaoExame { get; set; }
         public virtual ICollection<Consulta> Consultas { get; set; }
     }

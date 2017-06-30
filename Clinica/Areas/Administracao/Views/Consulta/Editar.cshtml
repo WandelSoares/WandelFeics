@@ -26,10 +26,26 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.AnimalID, "Animal", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("AnimalID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TratamentoID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.VeterinarioID, "Nome do Veterinario", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("VeterinarioID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.VeterinarioID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExameID, "Exame", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ExameID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ExameID, "", new { @class = "text-danger" })
             </div>
         </div>
 

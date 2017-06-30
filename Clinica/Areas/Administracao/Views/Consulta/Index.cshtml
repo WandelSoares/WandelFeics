@@ -30,7 +30,10 @@
             @Html.DisplayName("Tipo de Tratamento")
         </th>
              
-       
+        <th>
+            @Html.DisplayName("Nome do Animal")
+        </th>
+
         <th>
             @Html.DisplayName("Histórico")
         </th>
@@ -48,7 +51,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Tratamento.Descricao)
         </td>
-                
+             
+        <td>
+            @Html.DisplayFor(modelItem => item.Animal.NomeAnimal)
+        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.Historico)
         </td>
