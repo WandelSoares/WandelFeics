@@ -32,14 +32,20 @@
         <dd>
             @Html.DisplayFor(model => model.Veterinario.NomeVeterinario)
         </dd>
-
+        
         <dt>
             @Html.DisplayName("Nome do Animal:")
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Animal.NomeAnimal)
         </dd>
-               
+        <dt>
+            @Html.DisplayName("Exame:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Exame.DescricaoExame)
+        </dd>               
 
         <dt>
             @Html.DisplayName("Histórico:")
