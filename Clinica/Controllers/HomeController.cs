@@ -10,6 +10,7 @@ namespace Clinica.Controllers
     {
         public ActionResult Index()
         {
+            //DiagramadeClasses.DiagramaDeClasse.GerarDiagrama();
             return View();
         }
 

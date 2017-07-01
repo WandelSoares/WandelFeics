@@ -234,6 +234,12 @@
     <Compile Include="Areas\Administracao\Controllers\TratamentoController.cs" />
     <Compile Include="Areas\Administracao\Controllers\VeterinarioController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DiagramadeClasses\DiagramaDeClasse.cs" />
+    <Compile Include="DiagramadeClasses\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -513,6 +519,10 @@
     <Content Include="Areas\Administracao\Views\UIElements\Typography.cshtml" />
     <Content Include="Areas\Administracao\Views\Widgets\Index.cshtml" />
     <Content Include="Areas\Administracao\Views\_ViewStart.cshtml" />
+    <EntityDeploy Include="DiagramadeClasses\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
